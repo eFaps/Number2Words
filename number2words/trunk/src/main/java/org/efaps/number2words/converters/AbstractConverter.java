@@ -25,14 +25,15 @@ import java.text.DecimalFormat;
 import org.efaps.number2words.IConverter;
 
 /**
- * TODO comment!
+ * Abstract helper class which implements the main methods for the conversion
+ * of numbers to words.
  *
  * @author The eFaps Team
  * @version $Id$
  */
-public abstract class AbstractConverter implements IConverter
+public abstract class AbstractConverter
+    implements IConverter
 {
-
     /**
      * Method to convert the numbers from 1 to 999.
      *
@@ -43,75 +44,122 @@ public abstract class AbstractConverter implements IConverter
     {
         int number = _number;
         String soFar;
-        if (number % 100 < 20) {
-            soFar = getNumNames()[number % 100];
+        if ((number % 100) < 20)  {
+            soFar = this.getNumNames()[number % 100];
             number /= 100;
-        } else {
-            soFar = getNumNames()[number % 10];
+        } else  {
+            soFar = this.getNumNames()[number % 10];
             number /= 10;
 
-            soFar = getTensNames()[number % 10] + " " + soFar;
+            soFar = this.getTensNames()[number % 10] + " " + soFar;
             number /= 10;
         }
-        if (number != 0) {
-            soFar = getNumNames()[number] + " " + getLog()[0] + " " + soFar;
+        if (number != 0)  {
+            soFar = this.getNumNames()[number] + " " + getLogNames()[0] + " " + soFar;
         }
         return soFar;
     }
 
+    /**
+     * Returns the string array to define the conversion of numbers for 1 till
+     * 19.
+     *
+     * @return string array of numbers
+     */
     protected abstract String[] getNumNames();
 
+    /**
+     * Returns the string array for the numbers 10, 20, 30, 40, 50, 60, 70, 80
+     * and 90.
+     *
+     * @return string array of tens names
+     */
     protected abstract String[] getTensNames();
 
-    protected abstract String[] getLog();
+    /**
+     * Returns the string array for log numbers 100, 1000, 1000000 and
+     * 1000000000.
+     *
+     * @return string array of log numbers
+     */
+    protected abstract String[] getLogNames();
 
+    /**
+     * Returns the word for the number 0.
+     *
+     * @return string for the number 0
+     */
     protected abstract String getZero();
 
+    /**
+     * Converts the billion's of a number to related word representation.
+     *
+     * @param _billions     number of billion's to convert
+     * @return converted string with words
+     */
     protected String getBillions(final int _billions)
     {
-        String ret = "";
-        if (_billions != 0) {
-            ret = convertLessThanOneThousand(_billions) + " " + getLog()[3];
+        final String ret;
+        if (_billions != 0)  {
+            ret = this.convertLessThanOneThousand(_billions) + " " + this.getLogNames()[3];
+        } else  {
+            ret = "";
         }
         return ret;
     }
 
+    /**
+     * Converts the million's of a number to related word representation.
+     *
+     * @param _millions     number of million's to convert
+     * @return converted string with words
+     */
     protected String getMillions(final int _millions)
     {
-        String ret = "";
+        final String ret;
         if (_millions != 0) {
-            ret = convertLessThanOneThousand(_millions) + " " + getLog()[2];
+            ret = this.convertLessThanOneThousand(_millions) + " " + this.getLogNames()[2];
+        } else  {
+            ret = "";
         }
         return ret;
     }
 
+    /**
+     * Converts the thousand's of a number to related word representation.
+     *
+     * @param _thousends    number of thousend's to convert
+     * @return converted string with words
+     */
     protected String getThousands(final int _thousends)
     {
-        String ret = "";
+        final String ret;
         if (_thousends != 0) {
-            ret = convertLessThanOneThousand(_thousends) + " " + getLog()[1];
+            ret = this.convertLessThanOneThousand(_thousends) + " " + this.getLogNames()[1];
+        } else  {
+            ret = "";
         }
         return ret;
     }
 
     /**
      * Method to convert a number into words.
-     * @see org.efaps.number2words.IConverter#convert(long)
-     * @param _number number to convert
-     * @return  words representing the number
+     *
+     * @see IConverter#convert(long)
+     * @param _number   number to convert
+     * @return words representing the number
      */
     public String convert(final long _number)
     {
-        String ret;
+        final String ret;
         // 0 to 999 999 999 999
-        if (_number == 0) {
+        if (_number == 0)  {
             ret = getZero();
         } else {
-            String snumber = Long.toString(_number);
             // pad with "0"
             final String mask = "000000000000";
             final DecimalFormat df = new DecimalFormat(mask);
-            snumber = df.format(_number);
+            final String snumber = df.format(_number);
 
             // XXXnnnnnnnnn
             final int billions = Integer.parseInt(snumber.substring(0, 3));
@@ -120,13 +168,19 @@ public abstract class AbstractConverter implements IConverter
             // nnnnnnXXXnnn
             final int thous = Integer.parseInt(snumber.substring(6, 9));
             // nnnnnnnnnXXX
-            final int hundrets = Integer.parseInt(snumber.substring(9, 12));
+            final int hundreds = Integer.parseInt(snumber.substring(9, 12));
 
-            final String result = getBillions(billions) + " " + getMillions(millions) + " " + getThousands(thous) + " "
-                            + convertLessThanOneThousand(hundrets);
+            final String result = new StringBuilder()
+                    .append(this.getBillions(billions)).append(' ')
+                    .append(this.getMillions(millions)).append(' ')
+                    .append(this.getThousands(thous)).append(' ')
+                    .append(this.convertLessThanOneThousand(hundreds))
+                    .toString();
 
             // remove extra spaces!
-            ret = result.replaceAll("^\\s+", "").replaceAll("\\b\\s{2,}\\b", " ");
+            ret = result.replaceAll("^\\s+", "")
+                        .replaceAll("\\b\\s{2,}\\b", " ")
+                        .trim();
         }
         return ret;
     }

@@ -21,56 +21,92 @@
 package org.efaps.number2words.converters;
 
 /**
- * TODO comment!
+ * The class implements the conversion of numbers to English words.
  *
  * @author The eFaps Team
  * @version $Id$
  */
-public class English extends AbstractConverter
+public class English
+    extends AbstractConverter
 {
-    private static final String[] tensNames = { "", " ten", " twenty", " thirty", " forty", " fifty", " sixty",
-        " seventy", " eighty", " ninety" };
-
-    private static final String[] numNames = { "", " one", " two", " three", " four", " five", " six", " seven",
+    /**
+     * String array to define the conversion of numbers for 1 till 19.
+     *
+     * @see #getNumNames()
+     */
+    private static final String[] NUM_NAMES = {
+        "", " one", " two", " three", " four", " five", " six", " seven",
         " eight", " nine", " ten", " eleven", " twelve", " thirteen", " fourteen", " fifteen", " sixteen",
         " seventeen", " eighteen", " nineteen" };
 
-    private static final String[] log = {" hundred", " thousand", " million", " billion" };
+    /**
+     * String array to define the conversion for the numbers 10, 20, 30, 40,
+     * 50, 60, 70, 80 and 90.
+     *
+     * @see #getTensNames()
+     */
+    private static final String[] TENS_NAMES = {
+        "", " ten", " twenty", " thirty", " forty", " fifty", " sixty",
+        " seventy", " eighty", " ninety" };
 
     /**
-     * @see org.efaps.number2words.converters.AbstractConverter#getNumNames()
-     * @return
+     * String array to define the conversion for the log numbers 100, 1000,
+     * 1000000 and 1000000000.
+     *
+     * @see #getLogNames()
+     */
+    private static final String[] LOG_NAMES = {" hundred", " thousand", " million", " billion"};
+
+    /**
+     * Returns the string array to define the conversion of numbers for 1 till
+     * 19.
+     *
+     * @return string array of numbers
+     * @see AbstractConverter#getNumNames()
+     * @see #NUM_NAMES
      */
     @Override
     protected String[] getNumNames()
     {
-        return numNames;
+        return English.NUM_NAMES;
     }
 
     /**
-     * @see org.efaps.number2words.converters.AbstractConverter#getTensNames()
-     * @return
+     * Returns the string array for the numbers 10, 20, 30, 40, 50, 60, 70, 80
+     * and 90.
+     *
+     * @return string array of tens names
+     * @see AbstractConverter#getTensNames()
+     * @see #TENS_NAMES
      */
     @Override
     protected String[] getTensNames()
     {
-        return tensNames;
+        return English.TENS_NAMES;
     }
 
     /**
-     * @see org.efaps.number2words.converters.AbstractConverter#getHundred()
-     * @return
+     * Returns the string array for log numbers 100, 1000, 1000000 and
+     * 1000000000.
+     *
+     * @return string array of log numbers
+     * @see AbstractConverter#getHundred()
+     * @see #LOG_NAMES
      */
     @Override
-    protected String[] getLog()
+    protected String[] getLogNames()
     {
-        return log;
+        return English.LOG_NAMES;
     }
 
+    /**
+     * Returns the related English word for the number zero ('0').
+     *
+     * @return &quot;zero&quot;
+     */
     @Override
     protected String getZero()
     {
         return "zero";
     }
-
 }
