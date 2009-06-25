@@ -1,7 +1,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
 <!--
- * Copyright 2009 The jSVNServe Team
+ * Copyright 2003 - 2009 The eFaps Team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,7 +23,6 @@
 
 <suite name="number2words">
 
-  
   <test verbose="2" name="Test" annotations="JDK">
     <classes>
       <class name="org.efaps.number2words.test.Tests"/>
