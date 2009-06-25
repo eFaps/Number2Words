@@ -40,11 +40,19 @@ public final class Converter
     {
     }
 
-    public static IConverter getConverter(final Locale _locale) {
+    /**
+     * Returns for a language defined with <code>_locale</code> the related
+     * text converter.
+     *
+     * @param _locale   locale which defines the language
+     * @return related converted for given <code>_locale</code>
+     */
+    public static IConverter getConverter(final Locale _locale)
+    {
         IConverter converter = null;
-        if (_locale.getLanguage().equals("en")) {
+        if (_locale.getLanguage().equals("en"))  {
             converter = new English();
-        } else if (_locale.getLanguage().equals("es")) {
+        } else if (_locale.getLanguage().equals("es"))  {
             converter = new Spanish();
         }
         return converter;

@@ -21,12 +21,19 @@
 package org.efaps.number2words;
 
 /**
- * TODO comment!
+ * Interface description which must be implement for a language to convert
+ * numbers to related text representation.
  *
  * @author The eFaps Team
  * @version $Id$
  */
 public interface IConverter
 {
-    public String convert(final long number);
+    /**
+     * Converts the <code>_number</code> into the related text representation.
+     *
+     * @param _number   number to convert
+     * @return converted number
+     */
+    String convert(final long _number);
 }
