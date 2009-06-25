@@ -124,24 +124,39 @@ public class Tests
             {7, "siete"},
             {8, "ocho"},
             {16, "diecis\u00E9is"},
+            {21, "veintiuno"},
+            {22, "veintid\u00F3s"},
+            {23, "veintitr\u00E9s"},
+            {24, "veinticuatro"},
+            {25, "veinticinco"},
+            {26, "veintis\u00E9is"},
+            {27, "veintisiete"},
+            {28, "veintiocho"},
+            {29, "veintinueve"},
+            {30, "treinta"},
             {100, "cien"},
             {118, "ciento dieciocho"},
-            {147, "cientos cuarenta y siete"},
-            {200, "dos cientos"},
-            {219, "dos cientos diecinueve"},
-            {800, "ocho cientos"},
-            {801, "ocho cientos uno"},
-            {1316, "un mil tres cientos diecis\u00E9is"},
-            {24124, "veinte quatro mil veinte quatro"},
-            {700000, "siete cientos mil"},
-            {900000, "nueve cientos mil"},
+            {122, "ciento veintid\u00F3s"},
+            {147, "ciento cuarenta y siete"},
+            {200, "doscientos"},
+            {219, "doscientos diecinueve"},
+            {500, "quinientos"},
+            {800, "ochocientos"},
+            {801, "ochocientos uno"},
+            {1316, "un mil trescientos diecis\u00E9is"},
+            {24124, "veinticuatro mil ciento veinticuatro"},
+            {700000, "sietecientos mil"},
+            {900000, "novecientos mil"},
             {1000000, "un mill\u00F3n"},
             {2000000, "dos mill\u00F3nes"},
-            {3000200, "tres mill\u00F3nes dos cientos"},
-            {123456789, "veinte tres bill\u00F3nes quatro cientos cincuenta y seis mil siete cientos ochenta y nueve"},
+            {3000200, "tres mill\u00F3nes doscientos"},
+            {123456789, "ciento veintitr\u00E9s mill\u00F3nes "
+                        + "quatrocientos cincuenta y seis mil "
+                        + "sietecientos ochenta y nueve"},
             {1000000000, "un bill\u00F3n"},
-            {2147483647, "dos bill\u00F3nes cientos cuarenta y siete mill\u00F3nes quatro cientos ochenta "
-                        + "y tres mil seis cientos cuarenta y siete"}
+            {2147483647, "dos bill\u00F3nes ciento cuarenta y siete mill\u00F3nes "
+                        + "quatrocientos ochenta y tres mil "
+                        + "seiscientos cuarenta y siete"}
         };
     }
 }
