@@ -182,11 +182,23 @@ public class German
     /**
      * Returns the related English word for the number zero ('0').
      *
-     * @return &quot;zero&quot;
+     * @return  always the text string &quot;null&quot;
      */
     @Override
     protected String getZero()
     {
         return "null";
+    }
+
+    /**
+     * Returns the related German word for &quot;minus&quot; needed for
+     * negative numbers.
+     *
+     * @return always the text string &quot;minus&quot;
+     */
+    @Override
+    protected String getMinus()
+    {
+        return "minus";
     }
 }

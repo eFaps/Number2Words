@@ -44,11 +44,30 @@ public class German
      * @param _text     expected conversion in German words
      */
     @Test(dataProvider = "german")
-    public void german(final long _number,
-                       final String _text)
+    public void germanPositive(final long _number,
+                               final String _text)
     {
         final IConverter converter = Converter.getConverter(Locale.GERMAN);
         Assert.assertEquals(converter.convert(_number), _text, "test '" + _number + "'");
+    }
+
+    /**
+     * Test the convert for German language where the <code>_number</code> is
+     * interpreted as negative number.
+     *
+     * @param _number   number to check
+     * @param _text     expected conversion in German words
+     */
+    @Test(dataProvider = "german")
+    public void germanNegative(final long _number,
+                               final String _text)
+    {
+        final IConverter converter = Converter.getConverter(Locale.GERMAN);
+        if (_number > 0)  {
+            Assert.assertEquals(converter.convert((-1 * _number)), "minus " + _text, "test '-" + _number + "'");
+        } else  {
+            Assert.assertEquals(converter.convert(_number), _text, "test '" + _number + "'");
+        }
     }
 
     /**

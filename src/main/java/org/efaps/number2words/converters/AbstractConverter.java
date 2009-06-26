@@ -35,6 +35,14 @@ public abstract class AbstractConverter
     implements IConverter
 {
     /**
+     * Mask used to format the number to convert in strings to extract the
+     * numbers depending on the power.
+     *
+     * @see #convert(long)
+     */
+    private static final String FORMAT_MASK = "000000000000000000000";
+
+    /**
      * Method to convert the numbers from 1 to 999. The last to digits
      * (<code>_number modular 100</code>) are converted to words with
      * {@link #convertLessThanOneHundred(int)} so that some special kinds for
@@ -110,11 +118,19 @@ public abstract class AbstractConverter
     protected abstract String[] getPowerNames();
 
     /**
-     * Returns the word for the number 0.
+     * Returns the language specific word for the number 0.
      *
      * @return string for the number 0
      */
     protected abstract String getZero();
+
+    /**
+     * Returns the language specific word for &quot;minus&quot;. The word is
+     * needed to convert negative numbers.
+     *
+     * @return language specific wording for minus
+     */
+    protected abstract String getMinus();
 
     /**
      * The method converts the given <code>_number</code> depending on the
@@ -143,18 +159,19 @@ public abstract class AbstractConverter
      * @see IConverter#convert(long)
      * @param _number   number to convert
      * @return words representing the number
+     * @see #FORMAT_MASK
      */
     public String convert(final long _number)
     {
-        final String ret;
-        // 0 to 999 999 999 999
+        final StringBuilder ret = new StringBuilder();
         if (_number == 0)  {
-            ret = getZero();
+            ret.append(this.getZero());
         } else {
+            final long number = (_number < 0) ? (_number * -1) : _number;
+
             // pad with "0"
-            final String mask = "000000000000000000000";
-            final DecimalFormat df = new DecimalFormat(mask);
-            final String snumber = df.format(_number);
+            final DecimalFormat df = new DecimalFormat(AbstractConverter.FORMAT_MASK);
+            final String snumber = df.format(number);
 
             // XXXnnnnnnnnnnnnnnnnnn
             final int quintillions = Integer.parseInt(snumber.substring(0, 3));
@@ -181,11 +198,14 @@ public abstract class AbstractConverter
                     .append(this.convertLessThanOneThousand(hundreds))
                     .toString();
 
+            // negative number?
+            if (_number < 0)  {
+                ret.append(this.getMinus()).append(' ');
+            }
+
             // remove extra spaces!
-            ret = result.replaceAll("^\\s+", "")
-                        .replaceAll("\\b\\s{2,}\\b", " ")
-                        .trim();
+            ret.append(result.replaceAll("^\\s+", "").replaceAll("\\b\\s{2,}\\b", " ").trim());
         }
-        return ret;
+        return ret.toString();
     }
 }

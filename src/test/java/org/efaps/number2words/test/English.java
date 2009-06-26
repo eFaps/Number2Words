@@ -44,11 +44,30 @@ public class English
      * @param _text     expected conversion in English
      */
     @Test(dataProvider = "english")
-    public void english(final long _number,
-                        final String _text)
+    public void englishPositive(final long _number,
+                                final String _text)
     {
         final IConverter converter = Converter.getConverter(Locale.ENGLISH);
         Assert.assertEquals(converter.convert(_number), _text, "test '" + _number + "'");
+    }
+
+    /**
+     * Test the convert for English language where the <code>_number</code> is
+     * interpreted as negative number.
+     *
+     * @param _number   number to check
+     * @param _text     expected conversion in English
+     */
+    @Test(dataProvider = "english")
+    public void englishNegative(final long _number,
+                                final String _text)
+    {
+        final IConverter converter = Converter.getConverter(Locale.ENGLISH);
+        if (_number > 0)  {
+            Assert.assertEquals(converter.convert((-1 * _number)), "minus " + _text, "test '-" + _number + "'");
+        } else  {
+            Assert.assertEquals(converter.convert(_number), _text, "test '" + _number + "'");
+        }
     }
 
     /**
