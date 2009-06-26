@@ -102,7 +102,7 @@ public abstract class AbstractConverter
     protected abstract String[] getTensNames();
 
     /**
-     * Returns the string array for power numbers <code>10^n</code>. The
+     * Returns the string array for power numbers <code>1000^n</code>. The
      * translated word values must be defined in this order:
      * <ul>
      * <li><code>n = 0</code>: thousand</li>
