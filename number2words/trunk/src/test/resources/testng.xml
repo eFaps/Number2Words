@@ -23,10 +23,10 @@
 
 <suite name="number2words">
 
-  <test verbose="2" name="Test" annotations="JDK">
-    <classes>
-      <class name="org.efaps.number2words.test.Tests"/>
-    </classes>
-  </test>
+    <test verbose="2" name="Test" annotations="JDK">
+        <packages>
+            <package name="org.efaps.number2words.test"/>
+        </packages>
+    </test>
 
 </suite>
