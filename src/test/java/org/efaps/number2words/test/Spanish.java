@@ -84,7 +84,7 @@ public class Spanish
             {1L, "uno"},
             {2L, "dos"},
             {3L, "tres"},
-            {4L, "quatro"},
+            {4L, "cuatro"},
             {5L, "cinco"},
             {6L, "seis"},
             {7L, "siete"},
@@ -107,21 +107,22 @@ public class Spanish
             {200L, "doscientos"},
             {219L, "doscientos diecinueve"},
             {500L, "quinientos"},
+            {700L, "setecientos"},
             {800L, "ochocientos"},
             {801L, "ochocientos uno"},
             {1316L, "un mil trescientos diecis\u00E9is"},
             {24124L, "veinticuatro mil ciento veinticuatro"},
-            {700000L, "sietecientos mil"},
+            {700000L, "setecientos mil"},
             {900000L, "novecientos mil"},
             {1000000L, "un mill\u00F3n"},
             {2000000L, "dos mill\u00F3nes"},
             {3000200L, "tres mill\u00F3nes doscientos"},
             {123456789L, "ciento veintitr\u00E9s mill\u00F3nes "
-                        + "quatrocientos cincuenta y seis mil "
-                        + "sietecientos ochenta y nueve"},
+                        + "cuatrocientos cincuenta y seis mil "
+                        + "setecientos ochenta y nueve"},
             {1000000000L, "mil mill\u00F3nes"},
             {2147483647L, "dos mil mill\u00F3nes ciento cuarenta y siete mill\u00F3nes "
-                        + "quatrocientos ochenta y tres mil "
+                        + "cuatrocientos ochenta y tres mil "
                         + "seiscientos cuarenta y siete"},
             {1000000000000L, "un bill\u00F3n"},
             {1000000000000000L, "mil bill\u00F3nes"},
@@ -131,8 +132,8 @@ public class Spanish
                                 + "doscientos veintitr\u00E9s mil bill\u00F3nes "
                                 + "trescientos setenta y dos bill\u00F3nes "
                                 + "treinta y seis mil mill\u00F3nes "
-                                + "ochocientos cincuenta y quatro mill\u00F3nes "
-                                + "sietecientos setenta y cinco mil "
+                                + "ochocientos cincuenta y cuatro mill\u00F3nes "
+                                + "setecientos setenta y cinco mil "
                                 + "ochocientos siete"},
         };
     }
