@@ -48,16 +48,17 @@ public class English
      */
     private static final String[] TENS_NAMES = {
         "", "ten", "twenty", "thirty", "forty",
-        "fifty", "sixty", "seventy", "eighty", "ninety" };
+        "fifty", "sixty", "seventy", "eighty", "ninety",
+        "hundred"};
 
     /**
      * String array to define the conversion for the log numbers 100, 1000,
      * 1000000 and 1000000000.
      *
-     * @see #getLogNames()
+     * @see #getPowerNames()
      */
-    private static final String[] LOG_NAMES = {
-        "", "hundred", "thousand", "million", "billion"};
+    private static final String[] POWER_NAMES = {
+        "thousand", "million", "billion", "trillion", "quadrillion", "quintillion"};
 
     /**
      * Returns the string array to define the conversion of numbers for 1 till
@@ -92,13 +93,13 @@ public class English
      * 1000000000.
      *
      * @return string array of log numbers
-     * @see AbstractConverter#getLogNames()
-     * @see #LOG_NAMES
+     * @see AbstractConverter#getPowerNames()
+     * @see #POWER_NAMES
      */
     @Override
-    protected String[] getLogNames()
+    protected String[] getPowerNames()
     {
-        return English.LOG_NAMES;
+        return English.POWER_NAMES;
     }
 
     /**

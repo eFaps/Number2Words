@@ -49,7 +49,7 @@ public abstract class AbstractConverter
         return new StringBuilder()
                 .append(this.getNumNames()[_number / 100])
                 .append(' ')
-                .append(this.getLogNames()[(_number < 100) ? 0 : 1])
+                .append(this.getTensNames()[(_number < 100) ? 0 : 10])
                 .append(' ')
                 .append(this.convertLessThanOneHundred(_number % 100))
                 .toString();
@@ -86,20 +86,28 @@ public abstract class AbstractConverter
     protected abstract String[] getNumNames();
 
     /**
-     * Returns the string array for the numbers 10, 20, 30, 40, 50, 60, 70, 80
-     * and 90.
+     * Returns the string array for a zero length string and the words for
+     * numbers 10, 20, 30, 40, 50, 60, 70, 80, 90 and 100.
      *
      * @return string array of tens names
      */
     protected abstract String[] getTensNames();
 
     /**
-     * Returns the string array for log numbers 100, 1&nbsp;000,
-     * 1&nbsp;000&nbsp;000 and 1&nbsp;000&nbsp;000&nbsp;000.
+     * Returns the string array for power numbers <code>10^n</code>. The
+     * translated word values must be defined in this order:
+     * <ul>
+     * <li><code>n = 0</code>: thousand</li>
+     * <li><code>n = 1</code>: million</li>
+     * <li><code>n = 2</code>: billion</li>
+     * <li><code>n = 3</code>: trillion</li>
+     * <li><code>n = 4</code>: quadrillion</li>
+     * <li><code>n = 5</code>: quintillion</li>
+     * </ul>
      *
-     * @return string array of log numbers
+     * @return string array of power numbers
      */
-    protected abstract String[] getLogNames();
+    protected abstract String[] getPowerNames();
 
     /**
      * Returns the word for the number 0.
@@ -109,52 +117,22 @@ public abstract class AbstractConverter
     protected abstract String getZero();
 
     /**
-     * Converts the billion's of a number to related word representation.
+     * The method converts the given <code>_number</code> depending on the
+     * <code>_power</code> to words. The real number to convert is
+     * &quot;<code>_number * (10 ^ _power)</code>&quot;.
      *
-     * @param _billions     number of billion's to convert
-     * @return converted string with words
+     * @param _number   number to convert
+     * @param _power    power of the number
+     * @return converted string
      */
-    protected String getBillions(final int _billions)
+    protected String convertPower(final int _number,
+                                  final int _power)
     {
         final StringBuilder ret = new StringBuilder();
-        if (_billions != 0)  {
-            ret.append(this.convertLessThanOneThousand(_billions))
+        if (_number != 0)  {
+            ret.append(this.convertLessThanOneThousand(_number))
                 .append(' ')
-                .append(this.getLogNames()[4]);
-        }
-        return ret.toString();
-    }
-
-    /**
-     * Converts the million's of a number to related word representation.
-     *
-     * @param _millions     number of million's to convert
-     * @return converted string with words
-     */
-    protected String getMillions(final int _millions)
-    {
-        final StringBuilder ret = new StringBuilder();
-        if (_millions != 0)  {
-            ret.append(this.convertLessThanOneThousand(_millions))
-                .append(' ')
-                .append(this.getLogNames()[3]);
-        }
-        return ret.toString();
-    }
-
-    /**
-     * Converts the thousand's of a number to related word representation.
-     *
-     * @param _thousends    number of thousend's to convert
-     * @return converted string with words
-     */
-    protected String getThousands(final int _thousends)
-    {
-        final StringBuilder ret = new StringBuilder();
-        if (_thousends != 0)  {
-            ret.append(this.convertLessThanOneThousand(_thousends))
-                .append(' ')
-                .append(this.getLogNames()[2]);
+                .append(this.getPowerNames()[_power]);
         }
         return ret.toString();
     }
@@ -174,23 +152,32 @@ public abstract class AbstractConverter
             ret = getZero();
         } else {
             // pad with "0"
-            final String mask = "000000000000";
+            final String mask = "000000000000000000000";
             final DecimalFormat df = new DecimalFormat(mask);
             final String snumber = df.format(_number);
 
-            // XXXnnnnnnnnn
-            final int billions = Integer.parseInt(snumber.substring(0, 3));
-            // nnnXXXnnnnnn
-            final int millions = Integer.parseInt(snumber.substring(3, 6));
-            // nnnnnnXXXnnn
-            final int thous = Integer.parseInt(snumber.substring(6, 9));
-            // nnnnnnnnnXXX
-            final int hundreds = Integer.parseInt(snumber.substring(9, 12));
+            // XXXnnnnnnnnnnnnnnnnnn
+            final int quintillions = Integer.parseInt(snumber.substring(0, 3));
+            // nnnXXXnnnnnnnnnnnnnnn
+            final int quadrillions = Integer.parseInt(snumber.substring(3, 6));
+            // nnnnnnXXXnnnnnnnnnnnn
+            final int trillions = Integer.parseInt(snumber.substring(6, 9));
+            // nnnnnnnnnXXXnnnnnnnnn
+            final int billions = Integer.parseInt(snumber.substring(9, 12));
+            // nnnnnnnnnnnnXXXnnnnnn
+            final int millions = Integer.parseInt(snumber.substring(12, 15));
+            // nnnnnnnnnnnnnnnXXXnnn
+            final int thousands = Integer.parseInt(snumber.substring(15, 18));
+            // nnnnnnnnnnnnnnnnnnXXX
+            final int hundreds = Integer.parseInt(snumber.substring(18, 21));
 
             final String result = new StringBuilder()
-                    .append(this.getBillions(billions)).append(' ')
-                    .append(this.getMillions(millions)).append(' ')
-                    .append(this.getThousands(thous)).append(' ')
+                    .append(this.convertPower(quintillions, 5)).append(' ')
+                    .append(this.convertPower(quadrillions, 4)).append(' ')
+                    .append(this.convertPower(trillions, 3)).append(' ')
+                    .append(this.convertPower(billions, 2)).append(' ')
+                    .append(this.convertPower(millions, 1)).append(' ')
+                    .append(this.convertPower(thousands, 0)).append(' ')
                     .append(this.convertLessThanOneThousand(hundreds))
                     .toString();
 

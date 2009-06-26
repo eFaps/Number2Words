@@ -44,7 +44,7 @@ public class English
      * @param _text     expected conversion in English
      */
     @Test(dataProvider = "english")
-    public void english(final int _number,
+    public void english(final long _number,
                         final String _text)
     {
         final IConverter converter = Converter.getConverter(Locale.ENGLISH);
@@ -61,31 +61,38 @@ public class English
     public Object[][] englishTestData()
     {
         return new Object[][] {
-            {0, "zero"},
-            {1, "one"},
-            {2, "two"},
-            {3, "three"},
-            {4, "four"},
-            {5, "five"},
-            {6, "six"},
-            {7, "seven"},
-            {8, "eight"},
-            {16, "sixteen"},
-            {100, "one hundred"},
-            {118, "one hundred eighteen"},
-            {200, "two hundred"},
-            {219, "two hundred nineteen"},
-            {800, "eight hundred"},
-            {801, "eight hundred one"},
-            {1316, "one thousand three hundred sixteen"},
-            {700000, "seven hundred thousand"},
-            {900000, "nine hundred thousand"},
-            {1000000, "one million"},
-            {2000000, "two million"},
-            {3000200, "three million two hundred"},
-            {123456789, "one hundred twenty three million four hundred fifty six thousand seven hundred eighty nine"},
-            {2147483647, "two billion one hundred forty seven million "
-                        + "four hundred eighty three thousand six hundred forty seven"}
+            {0L, "zero"},
+            {1L, "one"},
+            {2L, "two"},
+            {3L, "three"},
+            {4L, "four"},
+            {5L, "five"},
+            {6L, "six"},
+            {7L, "seven"},
+            {8L, "eight"},
+            {16L, "sixteen"},
+            {100L, "one hundred"},
+            {118L, "one hundred eighteen"},
+            {200L, "two hundred"},
+            {219L, "two hundred nineteen"},
+            {800L, "eight hundred"},
+            {801L, "eight hundred one"},
+            {1316L, "one thousand three hundred sixteen"},
+            {700000L, "seven hundred thousand"},
+            {900000L, "nine hundred thousand"},
+            {1000000L, "one million"},
+            {2000000L, "two million"},
+            {3000200L, "three million two hundred"},
+            {123456789L, "one hundred twenty three million four hundred fifty six thousand seven hundred eighty nine"},
+            {2147483647L, "two billion one hundred forty seven million "
+                        + "four hundred eighty three thousand six hundred forty seven"},
+            {9223372036854775807L, "nine quintillion "
+                            + "two hundred twenty three quadrillion "
+                            + "three hundred seventy two trillion "
+                            + "thirty six billion "
+                            + "eight hundred fifty four million "
+                            + "seven hundred seventy five thousand "
+                            + "eight hundred seven"},
         };
     }
 }
