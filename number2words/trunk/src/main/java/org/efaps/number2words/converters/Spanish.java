@@ -187,7 +187,7 @@ public class Spanish
      * 1000000000.
      *
      * @return string array of log numbers
-     * @see AbstractConverter#getHundred()
+     * @see AbstractConverter#getLogNames()
      * @see #LOG_NAMES
      */
     @Override
