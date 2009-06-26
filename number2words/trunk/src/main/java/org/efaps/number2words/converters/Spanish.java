@@ -36,7 +36,7 @@ public class Spanish
      * @see #convertLessThanOneThousand(int)
      */
     private static final String[] NUM_NAMES = {
-        "", "uno", "dos", "tres", "quatro", "cinco",
+        "", "uno", "dos", "tres", "cuatro", "cinco",
         "seis", "siete", "ocho", "nueve",
         "diez", "once", "doce", "trece", "catorce",
         "quince", "diecis\u00E9is", "diecisiete", "dieciocho", "diecinueve", "veinte",
@@ -62,8 +62,8 @@ public class Spanish
      * @see #convertLessThanOneThousand(int)
      */
     private static final String[] HUNDREDS_NAMES = {
-        "", "ciento", "doscientos", "trescientos", "quatrocientos", "quinientos",
-        "seiscientos", "sietecientos", "ochocientos", "novecientos"};
+        "", "ciento", "doscientos", "trescientos", "cuatrocientos", "quinientos",
+        "seiscientos", "setecientos", "ochocientos", "novecientos"};
 
     /**
      * String array to define the conversion for the log numbers 100,
