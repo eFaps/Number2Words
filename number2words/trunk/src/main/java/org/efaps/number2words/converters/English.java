@@ -105,11 +105,23 @@ public class English
     /**
      * Returns the related English word for the number zero ('0').
      *
-     * @return &quot;zero&quot;
+     * @return always the text string &quot;zero&quot;
      */
     @Override
     protected String getZero()
     {
         return "zero";
+    }
+
+    /**
+     * Returns the related English word for &quot;minus&quot; needed for
+     * negative numbers.
+     *
+     * @return always the text string &quot;minus&quot;
+     */
+    @Override
+    protected String getMinus()
+    {
+        return "minus";
     }
 }

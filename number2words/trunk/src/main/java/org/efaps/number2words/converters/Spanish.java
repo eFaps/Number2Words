@@ -198,4 +198,16 @@ public class Spanish
     {
         return "cero";
     }
+
+    /**
+     * Returns the related Spanish word for &quot;minus&quot; needed for
+     * negative numbers.
+     *
+     * @return always the text string &quot;menos&quot;
+     */
+    @Override
+    protected String getMinus()
+    {
+        return "menos";
+    }
 }
