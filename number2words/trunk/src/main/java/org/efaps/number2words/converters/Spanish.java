@@ -106,20 +106,34 @@ public class Spanish
         if (_number == 100)  {
             ret.append("cien");
         } else  {
-            ret.append(Spanish.HUNDREDS_NAMES[_number / 100]);
+            ret.append(Spanish.HUNDREDS_NAMES[_number / 100])
+                .append(' ')
+                .append(this.convertLessThanOneHundred(_number % 100));
+        }
+        return ret.toString();
+    }
 
-            final int numsTens = _number % 100;
+    /**
+     * The method converts the numbers from 1 to 99 into words. The method is
+     * used from {@link AbstractConverter#convertLessThanOneThousand(int)}.
+     *
+     * @param _number       number less than one hundred to convert
+     * @return converted <code>_number</code> in words
+     */
+    @Override
+    protected String convertLessThanOneHundred(final int _number)
+    {
+        final StringBuilder ret = new StringBuilder();
 
-            // between 1 and 29
-            if (numsTens < 30) {
-                ret.append(" ").append(Spanish.NUM_NAMES[numsTens]);
-            // all others
-            } else  {
-                ret.append(" ").append(Spanish.TENS_NAMES[numsTens / 10]);
-                final String num = Spanish.NUM_NAMES[numsTens % 10];
-                if (!"".equals(num))  {
-                    ret.append(" y ").append(Spanish.NUM_NAMES[numsTens % 10]);
-                }
+        // between 1 and 29
+        if (_number < 30) {
+            ret.append(" ").append(Spanish.NUM_NAMES[_number]);
+        // all others
+        } else  {
+            ret.append(" ").append(Spanish.TENS_NAMES[_number / 10]);
+            final String num = Spanish.NUM_NAMES[_number % 10];
+            if (!"".equals(num))  {
+                ret.append(" y ").append(Spanish.NUM_NAMES[_number % 10]);
             }
         }
         return ret.toString();

@@ -65,25 +65,12 @@ public abstract class AbstractConverter
 
     /**
      * The method converts the numbers from 1 to 99 into words. The method is
-     * used from {@link #convertLessThanOneThousand(int)}, because e.g. for the
-     * German language the numbers less than one thousands must be converted
-     * into a special way (see {@link German#convertLessThanOneHundred(int)}).
+     * used from {@link #convertLessThanOneThousand(int)}.
      *
      * @param _number       number less than one hundred to convert
      * @return converted <code>_number</code> in words
      */
-    protected String convertLessThanOneHundred(final int _number)
-    {
-        final StringBuilder ret = new StringBuilder();
-        if (_number < 20)  {
-            ret.append(this.getNumNames()[_number]);
-        } else  {
-            ret.append(this.getTensNames()[_number / 10])
-                .append(' ')
-                .append(this.getNumNames()[_number % 10]);
-        }
-        return ret.toString();
-    }
+    protected abstract String convertLessThanOneHundred(final int _number);
 
     /**
      * Returns the string array to define the conversion of numbers for 1 till
