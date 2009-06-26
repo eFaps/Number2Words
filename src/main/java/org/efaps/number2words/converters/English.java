@@ -61,6 +61,27 @@ public class English
         "thousand", "million", "billion", "trillion", "quadrillion", "quintillion"};
 
     /**
+     * The method converts the numbers from 1 to 99 into words. The method is
+     * used from {@link AbstractConverter#convertLessThanOneThousand(int)}.
+     *
+     * @param _number       number less than one hundred to convert
+     * @return converted <code>_number</code> in words
+     */
+    @Override
+    protected String convertLessThanOneHundred(final int _number)
+    {
+        final StringBuilder ret = new StringBuilder();
+        if (_number < 20)  {
+            ret.append(this.getNumNames()[_number]);
+        } else  {
+            ret.append(this.getTensNames()[_number / 10])
+                .append('-')
+                .append(this.getNumNames()[_number % 10]);
+        }
+        return ret.toString();
+    }
+
+    /**
      * Returns the string array to define the conversion of numbers for 1 till
      * 19.
      *

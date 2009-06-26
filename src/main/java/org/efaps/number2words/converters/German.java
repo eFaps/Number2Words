@@ -109,7 +109,7 @@ public class German
         } else  {
             final int modTen = _number % 10;
             if (modTen > 0)  {
-                ret.append(this.getNumNames()[_number % 10]).append("-und-");
+                ret.append(this.getNumNames()[_number % 10]).append("und");
             }
             ret.append(this.getTensNames()[_number / 10]);
         }

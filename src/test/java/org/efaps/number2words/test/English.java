@@ -90,6 +90,8 @@ public class English
             {7L, "seven"},
             {8L, "eight"},
             {16L, "sixteen"},
+            {21L, "twenty-one"},
+            {71L, "seventy-one"},
             {100L, "one hundred"},
             {118L, "one hundred eighteen"},
             {200L, "two hundred"},
@@ -102,15 +104,19 @@ public class English
             {1000000L, "one million"},
             {2000000L, "two million"},
             {3000200L, "three million two hundred"},
-            {123456789L, "one hundred twenty three million four hundred fifty six thousand seven hundred eighty nine"},
-            {2147483647L, "two billion one hundred forty seven million "
-                        + "four hundred eighty three thousand six hundred forty seven"},
+            {123456789L, "one hundred twenty-three million "
+                        + "four hundred fifty-six thousand "
+                        + "seven hundred eighty-nine"},
+            {2147483647L, "two billion "
+                        + "one hundred forty-seven million "
+                        + "four hundred eighty-three thousand "
+                        + "six hundred forty-seven"},
             {9223372036854775807L, "nine quintillion "
-                            + "two hundred twenty three quadrillion "
-                            + "three hundred seventy two trillion "
-                            + "thirty six billion "
-                            + "eight hundred fifty four million "
-                            + "seven hundred seventy five thousand "
+                            + "two hundred twenty-three quadrillion "
+                            + "three hundred seventy-two trillion "
+                            + "thirty-six billion "
+                            + "eight hundred fifty-four million "
+                            + "seven hundred seventy-five thousand "
                             + "eight hundred seven"},
         };
     }

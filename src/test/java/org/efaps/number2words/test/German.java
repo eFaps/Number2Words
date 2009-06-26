@@ -92,33 +92,33 @@ public class German
             {9L, "neun"},
             {10L, "zehn"},
             {16L, "sechzehn"},
-            {21L, "ein-und-zwanzig"},
+            {21L, "einundzwanzig"},
             {30L, "drei\u00DFig"},
             {100L, "ein hundert"},
             {118L, "ein hundert achtzehn"},
-            {122L, "ein hundert zwei-und-zwanzig"},
+            {122L, "ein hundert zweiundzwanzig"},
             {200L, "zwei hundert"},
             {219L, "zwei hundert neunzehn"},
             {1316L, "ein tausend drei hundert sechzehn"},
-            {24124L, "vier-und-zwanzig tausend ein hundert vier-und-zwanzig"},
+            {24124L, "vierundzwanzig tausend ein hundert vierundzwanzig"},
             {700000L, "sieben hundert tausend"},
             {1000000L, "eine Million"},
             {2000000L, "zwei Millionen"},
             {3000200L, "drei Millionen zwei hundert"},
-            {123456789L, "ein hundert drei-und-zwanzig Millionen "
-                        + "vier hundert sechs-und-f\u00FCnfzig tausend "
-                        + "sieben hundert neun-und-achtzig"},
+            {123456789L, "ein hundert dreiundzwanzig Millionen "
+                        + "vier hundert sechsundf\u00FCnfzig tausend "
+                        + "sieben hundert neunundachtzig"},
             {1000000000L, "eine Milliarde"},
             {2147483647, "zwei Milliarden "
-                        + "ein hundert sieben-und-vierzig Millionen "
-                        + "vier hundert drei-und-achtzig tausend "
-                        + "sechs hundert sieben-und-vierzig"},
+                        + "ein hundert siebenundvierzig Millionen "
+                        + "vier hundert dreiundachtzig tausend "
+                        + "sechs hundert siebenundvierzig"},
             {9223372036854775807L, "neun Trillionen "
-                                 + "zwei hundert drei-und-zwanzig Billiarden "
-                                 + "drei hundert zwei-und-siebzig Billionen "
-                                 + "sechs-und-drei\u00DFig Milliarden "
-                                 + "acht hundert vier-und-f\u00FCnfzig Millionen "
-                                 + "sieben hundert f\u00FCnf-und-siebzig tausend "
+                                 + "zwei hundert dreiundzwanzig Billiarden "
+                                 + "drei hundert zweiundsiebzig Billionen "
+                                 + "sechsunddrei\u00DFig Milliarden "
+                                 + "acht hundert vierundf\u00FCnfzig Millionen "
+                                 + "sieben hundert f\u00FCnfundsiebzig tausend "
                                  + "acht hundert sieben"},
         };
     }
