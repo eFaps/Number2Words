@@ -35,9 +35,10 @@ public class English
      * @see #getNumNames()
      */
     private static final String[] NUM_NAMES = {
-        "", " one", " two", " three", " four", " five", " six", " seven",
-        " eight", " nine", " ten", " eleven", " twelve", " thirteen", " fourteen", " fifteen", " sixteen",
-        " seventeen", " eighteen", " nineteen" };
+        "", "one", "two", "three", "four",
+        "five", "six", "seven", "eight", "nine",
+        "ten", "eleven", "twelve", "thirteen", "fourteen",
+        "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"};
 
     /**
      * String array to define the conversion for the numbers 10, 20, 30, 40,
@@ -46,8 +47,8 @@ public class English
      * @see #getTensNames()
      */
     private static final String[] TENS_NAMES = {
-        "", " ten", " twenty", " thirty", " forty", " fifty", " sixty",
-        " seventy", " eighty", " ninety" };
+        "", "ten", "twenty", "thirty", "forty",
+        "fifty", "sixty", "seventy", "eighty", "ninety" };
 
     /**
      * String array to define the conversion for the log numbers 100, 1000,
@@ -55,7 +56,8 @@ public class English
      *
      * @see #getLogNames()
      */
-    private static final String[] LOG_NAMES = {" hundred", " thousand", " million", " billion"};
+    private static final String[] LOG_NAMES = {
+        "", "hundred", "thousand", "million", "billion"};
 
     /**
      * Returns the string array to define the conversion of numbers for 1 till

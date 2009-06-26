@@ -23,6 +23,7 @@ package org.efaps.number2words;
 import java.util.Locale;
 
 import org.efaps.number2words.converters.English;
+import org.efaps.number2words.converters.German;
 import org.efaps.number2words.converters.Spanish;
 
 /**
@@ -50,9 +51,11 @@ public final class Converter
     public static IConverter getConverter(final Locale _locale)
     {
         IConverter converter = null;
-        if (_locale.getLanguage().equals("en"))  {
+        if ("de".equals(_locale.getLanguage()))  {
+            converter = new German();
+        } else if ("en".equals(_locale.getLanguage()))  {
             converter = new English();
-        } else if (_locale.getLanguage().equals("es"))  {
+        } else if ("es".equals(_locale.getLanguage()))  {
             converter = new Spanish();
         }
         return converter;

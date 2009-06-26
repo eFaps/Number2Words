@@ -56,7 +56,8 @@ public class Spanish
 
     /**
      * String array to define the conversion for the hundred numbers 100, 200,
-     * 300, 400, 500, 600, 700, 800 and 900.
+     * 300, 400, 500, 600, 700, 800 and 900. In Spanish for some hundred
+     * numbers exists special wordings.
      *
      * @see #convertLessThanOneThousand(int)
      */
@@ -65,12 +66,13 @@ public class Spanish
         "seiscientos", "sietecientos", "ochocientos", "novecientos"};
 
     /**
-     * String array to define the conversion for the log numbers 100, 1000,
-     * 1000000 and 1000000000.
+     * String array to define the conversion for the log numbers 100,
+     * 1&nbsp;000, 1&nbsp;000&nbsp;000 and 1&nbsp;000&nbsp;000&nbsp;000.
      *
      * @see #getLogNames()
      */
-    private static final String[] LOG_NAMES = {"cien", " mil", " mill\u00F3nes", " bill\u00F3nes"};
+    private static final String[] LOG_NAMES = {
+        "", "cien", " mil", " mill\u00F3nes", " bill\u00F3nes"};
 
     /**
      * Method to convert the numbers from 1 to 999. The original method must be

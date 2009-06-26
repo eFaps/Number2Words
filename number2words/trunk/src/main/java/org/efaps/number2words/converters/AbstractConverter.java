@@ -35,29 +35,46 @@ public abstract class AbstractConverter
     implements IConverter
 {
     /**
-     * Method to convert the numbers from 1 to 999.
+     * Method to convert the numbers from 1 to 999. The last to digits
+     * (<code>_number modular 100</code>) are converted to words with
+     * {@link #convertLessThanOneHundred(int)} so that some special kinds for
+     * languages could be easy implemented.
      *
-     * @param _number number to be converted
+     * @param _number number less than one thousand to be converted
      * @return return words for number
+     * @see #convertLessThanOneHundred(int)
      */
     protected String convertLessThanOneThousand(final int _number)
     {
-        int number = _number;
-        String soFar;
-        if ((number % 100) < 20)  {
-            soFar = this.getNumNames()[number % 100];
-            number /= 100;
-        } else  {
-            soFar = this.getNumNames()[number % 10];
-            number /= 10;
+        return new StringBuilder()
+                .append(this.getNumNames()[_number / 100])
+                .append(' ')
+                .append(this.getLogNames()[(_number < 100) ? 0 : 1])
+                .append(' ')
+                .append(this.convertLessThanOneHundred(_number % 100))
+                .toString();
+    }
 
-            soFar = this.getTensNames()[number % 10] + " " + soFar;
-            number /= 10;
+    /**
+     * The method converts the numbers from 1 to 99 into words. The method is
+     * used from {@link #convertLessThanOneThousand(int)}, because e.g. for the
+     * German language the numbers less than one thousands must be converted
+     * into a special way (see {@link German#convertLessThanOneHundred(int)}).
+     *
+     * @param _number       number less than one hundred to convert
+     * @return converted <code>_number</code> in words
+     */
+    protected String convertLessThanOneHundred(final int _number)
+    {
+        final StringBuilder ret = new StringBuilder();
+        if (_number < 20)  {
+            ret.append(this.getNumNames()[_number]);
+        } else  {
+            ret.append(this.getTensNames()[_number / 10])
+                .append(' ')
+                .append(this.getNumNames()[_number % 10]);
         }
-        if (number != 0)  {
-            soFar = this.getNumNames()[number] + " " + getLogNames()[0] + " " + soFar;
-        }
-        return soFar;
+        return ret.toString();
     }
 
     /**
@@ -77,8 +94,8 @@ public abstract class AbstractConverter
     protected abstract String[] getTensNames();
 
     /**
-     * Returns the string array for log numbers 100, 1000, 1000000 and
-     * 1000000000.
+     * Returns the string array for log numbers 100, 1&nbsp;000,
+     * 1&nbsp;000&nbsp;000 and 1&nbsp;000&nbsp;000&nbsp;000.
      *
      * @return string array of log numbers
      */
@@ -99,13 +116,13 @@ public abstract class AbstractConverter
      */
     protected String getBillions(final int _billions)
     {
-        final String ret;
+        final StringBuilder ret = new StringBuilder();
         if (_billions != 0)  {
-            ret = this.convertLessThanOneThousand(_billions) + " " + this.getLogNames()[3];
-        } else  {
-            ret = "";
+            ret.append(this.convertLessThanOneThousand(_billions))
+                .append(' ')
+                .append(this.getLogNames()[4]);
         }
-        return ret;
+        return ret.toString();
     }
 
     /**
@@ -116,13 +133,13 @@ public abstract class AbstractConverter
      */
     protected String getMillions(final int _millions)
     {
-        final String ret;
-        if (_millions != 0) {
-            ret = this.convertLessThanOneThousand(_millions) + " " + this.getLogNames()[2];
-        } else  {
-            ret = "";
+        final StringBuilder ret = new StringBuilder();
+        if (_millions != 0)  {
+            ret.append(this.convertLessThanOneThousand(_millions))
+                .append(' ')
+                .append(this.getLogNames()[3]);
         }
-        return ret;
+        return ret.toString();
     }
 
     /**
@@ -133,13 +150,13 @@ public abstract class AbstractConverter
      */
     protected String getThousands(final int _thousends)
     {
-        final String ret;
-        if (_thousends != 0) {
-            ret = this.convertLessThanOneThousand(_thousends) + " " + this.getLogNames()[1];
-        } else  {
-            ret = "";
+        final StringBuilder ret = new StringBuilder();
+        if (_thousends != 0)  {
+            ret.append(this.convertLessThanOneThousand(_thousends))
+                .append(' ')
+                .append(this.getLogNames()[2]);
         }
-        return ret;
+        return ret.toString();
     }
 
     /**
