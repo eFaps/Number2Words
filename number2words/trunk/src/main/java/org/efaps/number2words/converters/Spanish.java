@@ -39,8 +39,8 @@ public class Spanish
         "", "uno", "dos", "tres", "quatro", "cinco",
         "seis", "siete", "ocho", "nueve",
         "diez", "once", "doce", "trece", "catorce",
-        "quince", "dieciséis", "diecisiete", "dieciocho", "diecinueve", "veinte",
-        "veintiuno", "veintidós", "veintitr\u00E9s", "veinticuatro", "veinticinco",
+        "quince", "diecis\u00E9is", "diecisiete", "dieciocho", "diecinueve", "veinte",
+        "veintiuno", "veintid\u00F3s", "veintitr\u00E9s", "veinticuatro", "veinticinco",
         "veintis\u00E9is", "veintisiete", "veintiocho", "veintinueve"};
 
     /**
@@ -52,7 +52,7 @@ public class Spanish
      */
     private static final String[] TENS_NAMES = {
         "", "diez", "veinte", "treinta", "cuarenta", "cincuenta",
-        "sesenta", "setenta", "ochenta", "noventa"};
+        "sesenta", "setenta", "ochenta", "noventa", "ciento"};
 
     /**
      * String array to define the conversion for the hundred numbers 100, 200,
@@ -69,10 +69,27 @@ public class Spanish
      * String array to define the conversion for the log numbers 100,
      * 1&nbsp;000, 1&nbsp;000&nbsp;000 and 1&nbsp;000&nbsp;000&nbsp;000.
      *
-     * @see #getLogNames()
+     * @see #getPowerNames()
      */
-    private static final String[] LOG_NAMES = {
-        "", "cien", " mil", " mill\u00F3nes", " bill\u00F3nes"};
+    private static final String[] POWER_NAMES = {
+        "mil", "mill\u00F3nes", "mil mill\u00F3nes", "bill\u00F3nes", "mil bill\u00F3nes", "trill\u00F3nes"};
+
+    /**
+     * String array to define the conversion of power numbers with exact one.
+     * The array contains the German words for
+     * <ul>
+     * <li>one thousand</li>
+     * <li>one million</li>
+     * <li>one billion</li>
+     * <li>one trillion</li>
+     * <li>one quadrillion</li>
+     * <li>one quintillion</li>
+     * </ul>
+     *
+     * @see #convertPower(int, int)
+     */
+    private static final String[] SINGLE_POWER_NAMES = {
+        "un mil", "un mill\u00F3n", "mil mill\u00F3nes", "un bill\u00F3n", "mil bill\u00F3nes", "un trill\u00F3n"};
 
     /**
      * Method to convert the numbers from 1 to 999. The original method must be
@@ -109,51 +126,24 @@ public class Spanish
     }
 
     /**
-     * Converts the billion's of a number to related word representation.
-     * Because in Spanish one billion must be written in another way, the
-     * original method was overwritten.
+     * The method converts the given <code>_number</code> depending on the
+     * <code>_power</code> to words. The real number to convert is
+     * &quot;<code>_number * (10 ^ _power)</code>&quot;. The original method is
+     * overwritten because if <code>_number</code> is equal one, the values
+     * from {@link #SINGLE_POWER_NAMES} must be used.
      *
-     * @param _billions     number of billion's to convert
-     * @return converted string with words
+     * @param _number   number to convert
+     * @param _power    power of the number
+     * @return converted string
+     * @see #SINGLE_POWER_NAMES
      */
     @Override
-    protected String getBillions(final int _billions)
+    protected String convertPower(final int _number,
+                                  final int _power)
     {
-        return (_billions == 1)
-               ? "un bill\u00F3n"
-               : super.getBillions(_billions);
-    }
-
-    /**
-     * Converts the million's of a number to related word representation.
-     * Because in Spanish one million must be written in another way, the
-     * original method was overwritten.
-     *
-     * @param _millions     number of million's to convert
-     * @return converted string with words
-     */
-    @Override
-    protected String getMillions(final int _millions)
-    {
-        return (_millions == 1)
-               ? "un mill\u00F3n"
-               : super.getMillions(_millions);
-    }
-
-    /**
-     * Converts the thousand's of a number to related word representation.
-     * Because in Spanish one thousands must be written in another way, the
-     * original method was overwritten.
-     *
-     * @param _thousends    number of thousend's to convert
-     * @return converted string with words
-     */
-    @Override
-    protected String getThousands(final int _thousends)
-    {
-        return (_thousends == 1)
-               ? "un mil"
-               : super.getThousands(_thousends);
+        return (_number == 1)
+               ? Spanish.SINGLE_POWER_NAMES[_power]
+               : super.convertPower(_number, _power);
     }
 
     /**
@@ -189,13 +179,13 @@ public class Spanish
      * 1000000000.
      *
      * @return string array of log numbers
-     * @see AbstractConverter#getLogNames()
-     * @see #LOG_NAMES
+     * @see AbstractConverter#getPowerNames()
+     * @see #POWER_NAMES
      */
     @Override
-    protected String[] getLogNames()
+    protected String[] getPowerNames()
     {
-        return Spanish.LOG_NAMES;
+        return Spanish.POWER_NAMES;
     }
 
     /**

@@ -42,22 +42,48 @@ public class German
 
     /**
      * String array to define the conversion for the numbers 10, 20, 30, 40,
-     * 50, 60, 70, 80 and 90.
+     * 50, 60, 70, 80, 90 and 100.
      *
      * @see #getTensNames()
      */
     private static final String[] TENS_NAMES = {
         "", "zehn", "zwanzig", "drei\u00DFig", "vierzig",
-        "f\u00FCnfzig", "sechzig", "siebzig", "achtzig", "neunzig"};
+        "f\u00FCnfzig", "sechzig", "siebzig", "achtzig", "neunzig",
+        "hundert"};
 
     /**
-     * String array to define the conversion for the log numbers 100,
-     * 1&nbsp;000, 1&nbsp;000&nbsp;000 and 1&nbsp;000&nbsp;000&nbsp;000.
+     * String array to define the conversion of power numbers. The array
+     * contains the German words for
+     * <ul>
+     * <li>thousand</li>
+     * <li>million</li>
+     * <li>billion</li>
+     * <li>trillion</li>
+     * <li>quadrillion</li>
+     * <li>quintillion</li>
+     * </ul>
      *
-     * @see #getLogNames()
+     * @see #getPowerNames()
      */
-    private static final String[] LOG_NAMES = {
-        "", "hundert", "tausend", "Millionen", "Milliarden"};
+    private static final String[] POWER_NAMES = {
+        "tausend", "Millionen", "Milliarden", "Billionen", "Billiarden", "Trillionen"};
+
+    /**
+     * String array to define the conversion of power numbers with exact one.
+     * The array contains the German words for
+     * <ul>
+     * <li>one thousand</li>
+     * <li>one million</li>
+     * <li>one billion</li>
+     * <li>one trillion</li>
+     * <li>one quadrillion</li>
+     * <li>one quintillion</li>
+     * </ul>
+     *
+     * @see #convertPower(int, int)
+     */
+    private static final String[] SINGLE_POWER_NAMES = {
+        "ein tausend", "eine Million", "eine Milliarde", "eine Billion", "eine Billiarde", "eine Trillion"};
 
     /**
      * <p>Converts number less than one hundred into German words. The original
@@ -88,6 +114,27 @@ public class German
             ret.append(this.getTensNames()[_number / 10]);
         }
         return ret.toString();
+    }
+
+    /**
+     * The method converts the given <code>_number</code> depending on the
+     * <code>_power</code> to words. The real number to convert is
+     * &quot;<code>_number * (10 ^ _power)</code>&quot;. The original method is
+     * overwritten because if <code>_number</code> is equal one, the values
+     * from {@link #SINGLE_POWER_NAMES} must be used.
+     *
+     * @param _number   number to convert
+     * @param _power    power of the number
+     * @return converted string
+     * @see #SINGLE_POWER_NAMES
+     */
+    @Override
+    protected String convertPower(final int _number,
+                                  final int _power)
+    {
+        return (_number == 1)
+               ? German.SINGLE_POWER_NAMES[_power]
+               : super.convertPower(_number, _power);
     }
 
     /**
@@ -123,13 +170,13 @@ public class German
      * 1&nbsp;000&nbsp;000 and 1&nbsp;000&nbsp;000&nbsp;000.
      *
      * @return string array of log numbers
-     * @see AbstractConverter#getLogNames()
+     * @see AbstractConverter#getPowerNames()
      * @see #LOG_NAMES
      */
     @Override
-    protected String[] getLogNames()
+    protected String[] getPowerNames()
     {
-        return German.LOG_NAMES;
+        return German.POWER_NAMES;
     }
 
     /**
@@ -142,37 +189,4 @@ public class German
     {
         return "null";
     }
-
-    /**
-     * Converts the billion's of a number to related word representation.
-     * Because in German one billion must be written in another way (&quot;eine
-     * Milliarde&quot;), the original method was overwritten.
-     *
-     * @param _billions     number of billion's to convert
-     * @return converted string with words
-     */
-    @Override
-    protected String getBillions(final int _billions)
-    {
-        return (_billions == 1)
-               ? "eine Milliarde"
-               : super.getBillions(_billions);
-    }
-
-    /**
-     * Converts the million's of a number to related word representation.
-     * Because in Spanish one million must be written in another way
-     * (&quot;eine Million&quot;), the original method was overwritten.
-     *
-     * @param _millions     number of million's to convert
-     * @return converted string with words
-     */
-    @Override
-    protected String getMillions(final int _millions)
-    {
-        return (_millions == 1)
-               ? "eine Million"
-               : super.getMillions(_millions);
-    }
-
 }
