@@ -49,6 +49,8 @@ public class Spanish
     {
         final IConverter converter = Converter.getMaleConverter(new Locale("es"));
         Assert.assertEquals(converter.convert(_number), _text, "test '" + _number + "'");
+        Assert.assertEquals(converter.usesShortScale(), false, "check Spanish uses long scale");
+        Assert.assertEquals(converter.isDecimal(), true, "check Spanish uses decimal system");
     }
 
     /**
@@ -68,6 +70,8 @@ public class Spanish
         } else  {
             Assert.assertEquals(converter.convert(_number), _text, "test '" + _number + "'");
         }
+        Assert.assertEquals(converter.usesShortScale(), false, "check Spanish uses long scale");
+        Assert.assertEquals(converter.isDecimal(), true, "check Spanish uses decimal system");
     }
 
     /**

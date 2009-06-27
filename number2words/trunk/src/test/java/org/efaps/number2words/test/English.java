@@ -49,6 +49,8 @@ public class English
     {
         final IConverter converter = Converter.getMaleConverter(Locale.ENGLISH);
         Assert.assertEquals(converter.convert(_number), _text, "test '" + _number + "'");
+        Assert.assertEquals(converter.usesShortScale(), true, "check English uses short scale");
+        Assert.assertEquals(converter.isDecimal(), true, "check English uses decimal system");
     }
 
     /**
@@ -68,6 +70,8 @@ public class English
         } else  {
             Assert.assertEquals(converter.convert(_number), _text, "test '" + _number + "'");
         }
+        Assert.assertEquals(converter.usesShortScale(), true, "check English uses short scale");
+        Assert.assertEquals(converter.isDecimal(), true, "check English uses decimal system");
     }
 
     /**

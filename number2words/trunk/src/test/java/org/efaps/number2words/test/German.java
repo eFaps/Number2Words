@@ -49,6 +49,8 @@ public class German
     {
         final IConverter converter = Converter.getMaleConverter(Locale.GERMAN);
         Assert.assertEquals(converter.convert(_number), _text, "test '" + _number + "'");
+        Assert.assertEquals(converter.usesShortScale(), false, "check German long short scale");
+        Assert.assertEquals(converter.isDecimal(), true, "check German uses decimal system");
     }
 
     /**
@@ -68,6 +70,8 @@ public class German
         } else  {
             Assert.assertEquals(converter.convert(_number), _text, "test '" + _number + "'");
         }
+        Assert.assertEquals(converter.usesShortScale(), false, "check German uses long scale");
+        Assert.assertEquals(converter.isDecimal(), true, "check German uses decimal system");
     }
 
     /**
