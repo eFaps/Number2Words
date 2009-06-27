@@ -44,7 +44,8 @@
     </links>
 
     <menu name="Main">
-      <item name="eFaps@GoogleCode" href="http://code.google.com/p/efaps/"/>
+      <item name="eFaps@GoogleCode" href="http://efaps.googlecode.com/"/>
+      <item name="Usage" href="usage.html"/>
     </menu>
     <menu ref="parent" />
     <menu ref="modules" />
