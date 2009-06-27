@@ -27,7 +27,19 @@ import org.efaps.number2words.converters.German;
 import org.efaps.number2words.converters.Spanish;
 
 /**
- * TODO comment!
+ * <p>Main entry point to get language specific number to word converters.
+ * Depending on the use case for what the converter will be used, the male
+ * {@link #getMaleConverter(Locale)}, female or neuter static method should be
+ * called to get the converter instance.</p>
+ *
+ * <p><b>Example:</b><br/>
+ * Male converter for German language to translate 100 to words:
+ * <pre>
+ * final IConverter converter = Converter.getMaleConverter(Locale.GERMAN);
+ * final String text = converter.convert(100L);
+ * </pre>
+ * The result in <code>text</code> is &quot;ein hundert&quot;.
+ * </p>
  *
  * @author The eFaps Team
  * @version $Id$
@@ -43,12 +55,12 @@ public final class Converter
 
     /**
      * Returns for a language defined with <code>_locale</code> the related
-     * text converter.
+     * text converter for male numbers.
      *
      * @param _locale   locale which defines the language
      * @return related converted for given <code>_locale</code>
      */
-    public static IConverter getConverter(final Locale _locale)
+    public static IConverter getMaleConverter(final Locale _locale)
     {
         IConverter converter = null;
         if ("de".equals(_locale.getLanguage()))  {

@@ -47,7 +47,7 @@ public class German
     public void germanPositive(final long _number,
                                final String _text)
     {
-        final IConverter converter = Converter.getConverter(Locale.GERMAN);
+        final IConverter converter = Converter.getMaleConverter(Locale.GERMAN);
         Assert.assertEquals(converter.convert(_number), _text, "test '" + _number + "'");
     }
 
@@ -62,7 +62,7 @@ public class German
     public void germanNegative(final long _number,
                                final String _text)
     {
-        final IConverter converter = Converter.getConverter(Locale.GERMAN);
+        final IConverter converter = Converter.getMaleConverter(Locale.GERMAN);
         if (_number > 0)  {
             Assert.assertEquals(converter.convert((-1 * _number)), "minus " + _text, "test '-" + _number + "'");
         } else  {
