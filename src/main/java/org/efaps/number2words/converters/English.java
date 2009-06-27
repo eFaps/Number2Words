@@ -27,7 +27,7 @@ package org.efaps.number2words.converters;
  * @version $Id$
  */
 public class English
-    extends AbstractConverter
+    extends AbstractDecimalConverter
 {
     /**
      * String array to define the conversion of numbers for 1 till 19.
@@ -62,7 +62,7 @@ public class English
 
     /**
      * The method converts the numbers from 1 to 99 into words. The method is
-     * used from {@link AbstractConverter#convertLessThanOneThousand(int)}.
+     * used from {@link AbstractDecimalConverter#convertLessThanOneThousand(int)}.
      *
      * @param _number       number less than one hundred to convert
      * @return converted <code>_number</code> in words
@@ -86,7 +86,7 @@ public class English
      * 19.
      *
      * @return string array of numbers
-     * @see AbstractConverter#getNumNames()
+     * @see AbstractDecimalConverter#getNumNames()
      * @see #NUM_NAMES
      */
     @Override
@@ -100,7 +100,7 @@ public class English
      * and 90.
      *
      * @return string array of tens names
-     * @see AbstractConverter#getTensNames()
+     * @see AbstractDecimalConverter#getTensNames()
      * @see #TENS_NAMES
      */
     @Override
@@ -114,7 +114,7 @@ public class English
      * 1000000000.
      *
      * @return string array of log numbers
-     * @see AbstractConverter#getPowerNames()
+     * @see AbstractDecimalConverter#getPowerNames()
      * @see #POWER_NAMES
      */
     @Override

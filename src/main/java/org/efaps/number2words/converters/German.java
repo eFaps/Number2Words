@@ -27,7 +27,7 @@ package org.efaps.number2words.converters;
  * @version $Id$
  */
 public class German
-    extends AbstractConverter
+    extends AbstractDecimalConverter
 {
     /**
      * String array to define the conversion of numbers for 1 till 19.
@@ -142,7 +142,7 @@ public class German
      * 19.
      *
      * @return string array of numbers
-     * @see AbstractConverter#getNumNames()
+     * @see AbstractDecimalConverter#getNumNames()
      * @see #NUM_NAMES
      */
     @Override
@@ -156,7 +156,7 @@ public class German
      * and 90.
      *
      * @return string array of tens names
-     * @see AbstractConverter#getTensNames()
+     * @see AbstractDecimalConverter#getTensNames()
      * @see #TENS_NAMES
      */
     @Override
@@ -170,7 +170,7 @@ public class German
      * 1&nbsp;000&nbsp;000 and 1&nbsp;000&nbsp;000&nbsp;000.
      *
      * @return string array of log numbers
-     * @see AbstractConverter#getPowerNames()
+     * @see AbstractDecimalConverter#getPowerNames()
      * @see #LOG_NAMES
      */
     @Override
