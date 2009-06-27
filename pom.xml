@@ -40,7 +40,7 @@
     <description>
         Package that converts numbers to words for different languages.
     </description>
-    <url>http://www.efaps.org</url>
+    <url>http://number2words.efaps.org</url>
     <licenses>
         <license>
             <name>The Apache Software License, Version 2.0</name>
@@ -54,12 +54,8 @@
             <name>Tim Moxter</name>
             <email>tim.moxter(ad)efaps.org</email>
             <url>www.efaps.org</url>
-            <organization>eFaps</organization>
-            <organizationUrl />
-            <roles>
-                <role>Architect</role>
-                <role>Release Manager</role>
-            </roles>
+            <organization>moxter.net Ltd. &amp; Co.KG</organization>
+            <organizationUrl>http://www.moxter.net/de/</organizationUrl>
             <timezone>+1</timezone>
             <properties />
         </developer>
@@ -69,10 +65,7 @@
             <email>jan.moxter(ad)efaps.org</email>
             <url>www.efaps.org</url>
             <organization>moxter.net S.A.C, Peru</organization>
-            <organizationUrl />
-            <roles>
-                <role>Architect</role>
-            </roles>
+            <organizationUrl>http://www.moxter.net/pe/</organizationUrl>
             <timezone>-5</timezone>
             <properties />
         </developer>
@@ -128,7 +121,7 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jxr-plugin</artifactId>
                 <configuration>
-                    <linkJavadoc>true</linkJavadoc>
+                    <linkJavadoc>false</linkJavadoc>
                     <javadocDir>apidocs</javadocDir>
                 </configuration>
             </plugin>
