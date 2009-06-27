@@ -47,7 +47,7 @@ public class English
     public void englishPositive(final long _number,
                                 final String _text)
     {
-        final IConverter converter = Converter.getConverter(Locale.ENGLISH);
+        final IConverter converter = Converter.getMaleConverter(Locale.ENGLISH);
         Assert.assertEquals(converter.convert(_number), _text, "test '" + _number + "'");
     }
 
@@ -62,7 +62,7 @@ public class English
     public void englishNegative(final long _number,
                                 final String _text)
     {
-        final IConverter converter = Converter.getConverter(Locale.ENGLISH);
+        final IConverter converter = Converter.getMaleConverter(Locale.ENGLISH);
         if (_number > 0)  {
             Assert.assertEquals(converter.convert((-1 * _number)), "minus " + _text, "test '-" + _number + "'");
         } else  {

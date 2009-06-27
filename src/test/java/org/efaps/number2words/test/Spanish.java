@@ -47,7 +47,7 @@ public class Spanish
     public void spanishPositive(final long _number,
                                 final String _text)
     {
-        final IConverter converter = Converter.getConverter(new Locale("es"));
+        final IConverter converter = Converter.getMaleConverter(new Locale("es"));
         Assert.assertEquals(converter.convert(_number), _text, "test '" + _number + "'");
     }
 
@@ -62,7 +62,7 @@ public class Spanish
     public void spanishNegative(final long _number,
                                 final String _text)
     {
-        final IConverter converter = Converter.getConverter(new Locale("es"));
+        final IConverter converter = Converter.getMaleConverter(new Locale("es"));
         if (_number > 0)  {
             Assert.assertEquals(converter.convert((-1 * _number)), "menos " + _text, "test '-" + _number + "'");
         } else  {
