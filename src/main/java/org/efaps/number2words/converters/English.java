@@ -138,11 +138,25 @@ public class English
      * Returns the related English word for &quot;minus&quot; needed for
      * negative numbers.
      *
-     * @return always the text string &quot;minus&quot;
+     * @return always the English text string &quot;minus&quot;
      */
     @Override
     protected String getMinus()
     {
         return "minus";
+    }
+
+    /**
+     * Returns always <i>true</i> because the English language uses for the
+     * representation of numbers in words the short scale system. Only the
+     * &quot;traditional British English&quot; language uses sometimes the long
+     * scale system (but not supported from this English converter).
+     *
+     * @return always <i>true</i>
+     */
+    @Override
+    public boolean usesShortScale()
+    {
+        return true;
     }
 }

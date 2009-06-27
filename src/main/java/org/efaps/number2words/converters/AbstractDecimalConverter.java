@@ -195,4 +195,27 @@ public abstract class AbstractDecimalConverter
         }
         return ret.toString();
     }
+
+    /**
+     * The abstract class helps to implement converters for languages which are
+     * using the decimal system. Therefore the method always returns
+     * <i>true</i>.
+     *
+     * @return always <i>true</i>
+     */
+    public boolean isDecimal()
+    {
+        return true;
+    }
+
+    /**
+     * A <i>false</i> is returned because typically a language should use the
+     * long scale numerical system.
+     *
+     * @return always <i>false</i>
+     */
+    public boolean usesShortScale()
+    {
+        return false;
+    }
 }
