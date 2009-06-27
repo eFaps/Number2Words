@@ -26,16 +26,16 @@ import org.efaps.number2words.IConverter;
 
 /**
  * Abstract helper class which implements the main methods for the conversion
- * of numbers to words.
+ * of numbers to words for languages which uses the decimal system.
  *
  * @author The eFaps Team
  * @version $Id$
  */
-public abstract class AbstractConverter
+public abstract class AbstractDecimalConverter
     implements IConverter
 {
     /**
-     * Mask used to format the number to convert in strings to extract the
+     * Mask used to format theAbstractDecimalConvertert in strings to extract the
      * numbers depending on the power.
      *
      * @see #convert(long)
@@ -157,7 +157,7 @@ public abstract class AbstractConverter
             final long number = (_number < 0) ? (_number * -1) : _number;
 
             // pad with "0"
-            final DecimalFormat df = new DecimalFormat(AbstractConverter.FORMAT_MASK);
+            final DecimalFormat df = new DecimalFormat(AbstractDecimalConverter.FORMAT_MASK);
             final String snumber = df.format(number);
 
             // XXXnnnnnnnnnnnnnnnnnn
