@@ -1,0 +1,20 @@
+Usage
+
+* Introduction
+
+    The "number2words" Api could be used to convert numbers into words depending 
+    on a selected language. In some languages the translation of numbers depends
+    on the usecase "male", "female" or "neuter". Currently only the "male" 
+    usecase is supported from the API.
+
+
+* Example
+
+    Male converter for German language to translate 100 to words:
+
+---
+final IConverter converter = Converter.getMaleConverter(Locale.GERMAN);
+final String text = converter.convert(100L);
+---
+
+    The result in text is "ein hundert".
