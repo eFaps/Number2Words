@@ -35,7 +35,7 @@
     <packaging>jar</packaging>
     <groupId>org.efaps</groupId>
     <artifactId>number2words</artifactId>
-    <version>0.2-SNAPSHOT</version>
+    <version>0.2</version>
     <name>Number2Words</name>
     <description>
         Package that converts numbers to words for different languages.
