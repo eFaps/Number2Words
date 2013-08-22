@@ -155,10 +155,21 @@ public class Spanish
     protected String convertPower(final int _number,
                                   final int _power)
     {
-        return (_number == 1)
-               ? Spanish.SINGLE_POWER_NAMES[_power]
-               : super.convertPower(_number, _power);
+        final StringBuilder ret = new StringBuilder();
+        if((_number % 10) == 1){
+            if((_number == 1)){
+                ret.append(Spanish.SINGLE_POWER_NAMES[_power]);
+            }else{
+                ret.append(super.convertPowerOne(_number, _power));
+            }
+        }else{
+            ret.append(super.convertPower(_number, _power));
+        }
+        return ret.toString();
     }
+
+
+
 
     /**
      * Returns the string array to define the conversion of numbers for 1 till
