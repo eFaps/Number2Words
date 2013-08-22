@@ -139,6 +139,24 @@ public abstract class AbstractDecimalConverter
         }
         return ret.toString();
     }
+    protected String convertPowerOne(final int _number,
+                                  final int _power)
+    {
+        final StringBuilder ret = new StringBuilder();
+        if (_number != 0)  {
+            ret.append(this.convertLessThanOneThousandOne(_number))
+                .append(' ')
+                .append(this.getPowerNames()[_power]);
+        }
+        return ret.toString();
+    }
+    protected String convertLessThanOneThousandOne(final int _number)
+    {
+        String stn = this.convertLessThanOneHundred(_number % 100);
+        return new StringBuilder()
+                .append(stn.substring(0, stn.length()-1))
+                .toString();
+    }
 
     /**
      * Method to convert a number into words.
