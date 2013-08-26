@@ -113,6 +113,22 @@ public class Spanish
         return ret.toString();
     }
 
+    @Override
+    protected String convertLessThanOneThousandOne(final int _number)
+    {
+        String stn = this.convertLessThanOneHundred(_number % 100);
+        final StringBuilder ret = new StringBuilder();
+        if (_number == 100)  {
+            ret.append("cien");
+        } else  {
+            ret.append(Spanish.HUNDREDS_NAMES[_number / 100])
+                .append(' ')
+                .append(stn.substring(0, stn.length() - 1))
+                .toString();
+        }
+        return ret.toString();
+    }
+
     /**
      * The method converts the numbers from 1 to 99 into words. The method is
      * used from {@link AbstractDecimalConverter#convertLessThanOneThousand(int)}.
@@ -160,7 +176,11 @@ public class Spanish
             if((_number == 1)){
                 ret.append(Spanish.SINGLE_POWER_NAMES[_power]);
             }else{
-                ret.append(super.convertPowerOne(_number, _power));
+                if((_number%100)==11){
+                    ret.append(super.convertPower(_number, _power));
+                }else{
+                    ret.append(super.convertPowerOne(_number, _power));
+                }
             }
         }else{
             ret.append(super.convertPower(_number, _power));
