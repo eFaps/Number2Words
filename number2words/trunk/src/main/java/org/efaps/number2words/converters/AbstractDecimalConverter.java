@@ -154,9 +154,14 @@ public abstract class AbstractDecimalConverter
     {
         String stn = this.convertLessThanOneHundred(_number % 100);
         return new StringBuilder()
-                .append(stn.substring(0, stn.length()-1))
-                .toString();
+                        .append(this.getNumNames()[_number / 100])
+                        .append(' ')
+                        .append(this.getTensNames()[(_number < 100) ? 0 : 10])
+                        .append(' ')
+                        .append(stn.substring(0, stn.length() - 1))
+                        .toString();
     }
+
 
     /**
      * Method to convert a number into words.
