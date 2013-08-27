@@ -34,7 +34,7 @@
     
     <packaging>jar</packaging>
     <artifactId>number2words</artifactId>
-    <version>0.5-SNAPSHOT</version>
+    <version>0.5</version>
     
     <name>Number2Words</name>
     <description>
@@ -46,8 +46,8 @@
    
     <!-- SubVersion Repository -->
     <scm>
-      <connection>scm:svn:http://efaps.googlecode.com/svn/number2words/trunk</connection>
-      <developerConnection>scm:svn:https://efaps.googlecode.com/svn/number2words/trunk</developerConnection>
+      <connection>scm:svn:http://efaps.googlecode.com/svn/number2words/tags/number2words-0.5</connection>
+      <developerConnection>scm:svn:https://efaps.googlecode.com/svn/number2words/tags/number2words-0.5</developerConnection>
       <url>http://code.google.com/p/efaps/source/browse#svn/number2words/tags/number2words-0.5</url>
     </scm>
     
