@@ -1,5 +1,5 @@
 /*
- * Copyright 2003 - 2009 The eFaps Team
+ * Copyright 2003 - 2013 The eFaps Team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,7 +34,7 @@ import org.testng.annotations.Test;
  * @author The eFaps Team
  * @version $Id$
  */
-@Test()
+@Test
 public class English
 {
     /**
@@ -66,7 +66,7 @@ public class English
     {
         final IConverter converter = Converter.getMaleConverter(Locale.ENGLISH);
         if (_number > 0)  {
-            Assert.assertEquals(converter.convert((-1 * _number)), "minus " + _text, "test '-" + _number + "'");
+            Assert.assertEquals(converter.convert(-1 * _number), "minus " + _text, "test '-" + _number + "'");
         } else  {
             Assert.assertEquals(converter.convert(_number), _text, "test '" + _number + "'");
         }

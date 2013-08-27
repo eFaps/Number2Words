@@ -1,5 +1,5 @@
 /*
- * Copyright 2003 - 2009 The eFaps Team
+ * Copyright 2003 - 2013 The eFaps Team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -55,11 +55,11 @@ public abstract class AbstractDecimalConverter
     protected String convertLessThanOneThousand(final int _number)
     {
         return new StringBuilder()
-                .append(this.getNumNames()[_number / 100])
+                .append(getNumNames()[_number / 100])
                 .append(' ')
-                .append(this.getTensNames()[(_number < 100) ? 0 : 10])
+                .append(getTensNames()[(_number < 100) ? 0 : 10])
                 .append(' ')
-                .append(this.convertLessThanOneHundred(_number % 100))
+                .append(convertLessThanOneHundred(_number % 100))
                 .toString();
     }
 
@@ -133,35 +133,12 @@ public abstract class AbstractDecimalConverter
     {
         final StringBuilder ret = new StringBuilder();
         if (_number != 0)  {
-            ret.append(this.convertLessThanOneThousand(_number))
+            ret.append(convertLessThanOneThousand(_number))
                 .append(' ')
-                .append(this.getPowerNames()[_power]);
+                .append(getPowerNames()[_power]);
         }
         return ret.toString();
     }
-    protected String convertPowerOne(final int _number,
-                                  final int _power)
-    {
-        final StringBuilder ret = new StringBuilder();
-        if (_number != 0)  {
-            ret.append(this.convertLessThanOneThousandOne(_number))
-                .append(' ')
-                .append(this.getPowerNames()[_power]);
-        }
-        return ret.toString();
-    }
-    protected String convertLessThanOneThousandOne(final int _number)
-    {
-        String stn = this.convertLessThanOneHundred(_number % 100);
-        return new StringBuilder()
-                        .append(this.getNumNames()[_number / 100])
-                        .append(' ')
-                        .append(this.getTensNames()[(_number < 100) ? 0 : 10])
-                        .append(' ')
-                        .append(stn.substring(0, stn.length() - 1))
-                        .toString();
-    }
-
 
     /**
      * Method to convert a number into words.
@@ -175,7 +152,7 @@ public abstract class AbstractDecimalConverter
     {
         final StringBuilder ret = new StringBuilder();
         if (_number == 0)  {
-            ret.append(this.getZero());
+            ret.append(getZero());
         } else {
             final long number = (_number < 0) ? (_number * -1) : _number;
 
@@ -199,18 +176,18 @@ public abstract class AbstractDecimalConverter
             final int hundreds = Integer.parseInt(snumber.substring(18, 21));
 
             final String result = new StringBuilder()
-                    .append(this.convertPower(quintillions, 5)).append(' ')
-                    .append(this.convertPower(quadrillions, 4)).append(' ')
-                    .append(this.convertPower(trillions, 3)).append(' ')
-                    .append(this.convertPower(billions, 2)).append(' ')
-                    .append(this.convertPower(millions, 1)).append(' ')
-                    .append(this.convertPower(thousands, 0)).append(' ')
-                    .append(this.convertLessThanOneThousand(hundreds))
+                    .append(convertPower(quintillions, 5)).append(' ')
+                    .append(convertPower(quadrillions, 4)).append(' ')
+                    .append(convertPower(trillions, 3)).append(' ')
+                    .append(convertPower(billions, 2)).append(' ')
+                    .append(convertPower(millions, 1)).append(' ')
+                    .append(convertPower(thousands, 0)).append(' ')
+                    .append(convertLessThanOneThousand(hundreds))
                     .toString();
 
             // negative number?
             if (_number < 0)  {
-                ret.append(this.getMinus()).append(' ');
+                ret.append(getMinus()).append(' ');
             }
 
             // remove extra spaces!
