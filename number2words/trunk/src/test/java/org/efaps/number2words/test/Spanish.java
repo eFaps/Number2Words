@@ -34,7 +34,7 @@ import org.testng.annotations.Test;
  * @author The eFaps Team
  * @version $Id$
  */
-@Test()
+@Test
 public class Spanish
 {
     /**
@@ -66,7 +66,7 @@ public class Spanish
     {
         final IConverter converter = Converter.getMaleConverter(new Locale("es"));
         if (_number > 0)  {
-            Assert.assertEquals(converter.convert((-1 * _number)), "menos " + _text, "test '-" + _number + "'");
+            Assert.assertEquals(converter.convert(-1 * _number), "menos " + _text, "test '-" + _number + "'");
         } else  {
             Assert.assertEquals(converter.convert(_number), _text, "test '" + _number + "'");
         }

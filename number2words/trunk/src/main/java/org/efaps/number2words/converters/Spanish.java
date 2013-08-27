@@ -1,5 +1,5 @@
 /*
- * Copyright 2003 - 2009 The eFaps Team
+ * Copyright 2003 - 2013 The eFaps Team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +21,10 @@
 package org.efaps.number2words.converters;
 
 /**
- * The class implements the conversion of numbers to Spanish words.
+ * The class implements the conversion of numbers to Spanish words.<br/>
+ * The number "one" has a special treatment: It is registered in arrays as "un",
+ * but if the number acual end in "1" an "o" will be added converting a "un" in
+ * "uno".
  *
  * @author The eFaps Team
  * @version $Id$
@@ -36,11 +39,11 @@ public class Spanish
      * @see #convertLessThanOneThousand(int)
      */
     private static final String[] NUM_NAMES = {
-        "", "uno", "dos", "tres", "cuatro", "cinco",
+        "", "un", "dos", "tres", "cuatro", "cinco",
         "seis", "siete", "ocho", "nueve",
         "diez", "once", "doce", "trece", "catorce",
         "quince", "diecis\u00E9is", "diecisiete", "dieciocho", "diecinueve", "veinte",
-        "veintiuno", "veintid\u00F3s", "veintitr\u00E9s", "veinticuatro", "veinticinco",
+        "veintiun", "veintid\u00F3s", "veintitr\u00E9s", "veinticuatro", "veinticinco",
         "veintis\u00E9is", "veintisiete", "veintiocho", "veintinueve"};
 
     /**
@@ -76,7 +79,7 @@ public class Spanish
 
     /**
      * String array to define the conversion of power numbers with exact one.
-     * The array contains the German words for
+     * The array contains the Spanish words for
      * <ul>
      * <li>one thousand</li>
      * <li>one million</li>
@@ -108,23 +111,7 @@ public class Spanish
         } else  {
             ret.append(Spanish.HUNDREDS_NAMES[_number / 100])
                 .append(' ')
-                .append(this.convertLessThanOneHundred(_number % 100));
-        }
-        return ret.toString();
-    }
-
-    @Override
-    protected String convertLessThanOneThousandOne(final int _number)
-    {
-        String stn = this.convertLessThanOneHundred(_number % 100);
-        final StringBuilder ret = new StringBuilder();
-        if (_number == 100)  {
-            ret.append("cien");
-        } else  {
-            ret.append(Spanish.HUNDREDS_NAMES[_number / 100])
-                .append(' ')
-                .append(stn.substring(0, stn.length() - 1))
-                .toString();
+                .append(convertLessThanOneHundred(_number % 100));
         }
         return ret.toString();
     }
@@ -171,25 +158,10 @@ public class Spanish
     protected String convertPower(final int _number,
                                   final int _power)
     {
-        final StringBuilder ret = new StringBuilder();
-        if((_number % 10) == 1){
-            if((_number == 1)){
-                ret.append(Spanish.SINGLE_POWER_NAMES[_power]);
-            }else{
-                if((_number%100)==11){
-                    ret.append(super.convertPower(_number, _power));
-                }else{
-                    ret.append(super.convertPowerOne(_number, _power));
-                }
-            }
-        }else{
-            ret.append(super.convertPower(_number, _power));
-        }
-        return ret.toString();
+        return (_number == 1)
+                        ? Spanish.SINGLE_POWER_NAMES[_power]
+                        : super.convertPower(_number, _power);
     }
-
-
-
 
     /**
      * Returns the string array to define the conversion of numbers for 1 till
@@ -254,5 +226,19 @@ public class Spanish
     protected String getMinus()
     {
         return "menos";
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String convert(final long _number)
+    {
+        final StringBuilder ret = new StringBuilder();
+        ret.append(super.convert(_number));
+        if (Long.valueOf(_number).toString().endsWith("1")) {
+            ret.append("o");
+        }
+        return ret.toString();
     }
 }
