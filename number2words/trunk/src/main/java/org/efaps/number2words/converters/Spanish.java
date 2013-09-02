@@ -236,7 +236,7 @@ public class Spanish
     {
         final StringBuilder ret = new StringBuilder();
         ret.append(super.convert(_number));
-        if (Long.valueOf(_number).toString().endsWith("1")) {
+        if (Long.valueOf(_number).toString().endsWith("1") && _number!=11) {
             ret.append("o");
         }
         return ret.toString();

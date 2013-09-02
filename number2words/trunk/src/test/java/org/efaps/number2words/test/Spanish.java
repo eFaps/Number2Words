@@ -93,6 +93,7 @@ public class Spanish
             {6L, "seis"},
             {7L, "siete"},
             {8L, "ocho"},
+            {11L, "once"},
             {16L, "diecis\u00E9is"},
             {21L, "veintiuno"},
             {22L, "veintid\u00F3s"},
