@@ -1,5 +1,5 @@
 /*
- * Copyright 2003 - 2009 The eFaps Team
+ * Copyright 2003 - 2020 The eFaps Team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,9 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * Revision:        $Rev$
- * Last Changed:    $Date$
- * Last Changed By: $Author$
  */
 
 package org.efaps.number2words.converters;
@@ -24,7 +21,6 @@ package org.efaps.number2words.converters;
  * The class implements the conversion of numbers to German words.
  *
  * @author The eFaps Team
- * @version $Id$
  */
 public class German
     extends AbstractDecimalConverter
@@ -105,13 +101,13 @@ public class German
     {
         final StringBuilder ret = new StringBuilder();
         if (_number < 20)  {
-            ret.append(this.getNumNames()[_number]);
+            ret.append(getNumNames()[_number]);
         } else  {
             final int modTen = _number % 10;
             if (modTen > 0)  {
-                ret.append(this.getNumNames()[_number % 10]).append("und");
+                ret.append(getNumNames()[_number % 10]).append("und");
             }
-            ret.append(this.getTensNames()[_number / 10]);
+            ret.append(getTensNames()[_number / 10]);
         }
         return ret.toString();
     }
@@ -132,7 +128,7 @@ public class German
     protected String convertPower(final int _number,
                                   final int _power)
     {
-        return (_number == 1)
+        return _number == 1
                ? German.SINGLE_POWER_NAMES[_power]
                : super.convertPower(_number, _power);
     }

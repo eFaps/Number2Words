@@ -1,5 +1,5 @@
 /*
- * Copyright 2003 - 2013 The eFaps Team
+ * Copyright 2003 - 2020 The eFaps Team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,9 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * Revision:        $Rev$
- * Last Changed:    $Date$
- * Last Changed By: $Author$
  */
 
 package org.efaps.number2words.converters;
@@ -29,7 +26,6 @@ import org.efaps.number2words.IConverter;
  * of numbers to words for languages which uses the decimal system.
  *
  * @author The eFaps Team
- * @version $Id$
  */
 public abstract class AbstractDecimalConverter
     implements IConverter
@@ -57,7 +53,7 @@ public abstract class AbstractDecimalConverter
         return new StringBuilder()
                 .append(getNumNames()[_number / 100])
                 .append(' ')
-                .append(getTensNames()[(_number < 100) ? 0 : 10])
+                .append(getTensNames()[_number < 100 ? 0 : 10])
                 .append(' ')
                 .append(convertLessThanOneHundred(_number % 100))
                 .toString();
@@ -148,13 +144,14 @@ public abstract class AbstractDecimalConverter
      * @return words representing the number
      * @see #FORMAT_MASK
      */
+    @Override
     public String convert(final long _number)
     {
         final StringBuilder ret = new StringBuilder();
         if (_number == 0)  {
             ret.append(getZero());
         } else {
-            final long number = (_number < 0) ? (_number * -1) : _number;
+            final long number = _number < 0 ? _number * -1 : _number;
 
             // pad with "0"
             final DecimalFormat df = new DecimalFormat(AbstractDecimalConverter.FORMAT_MASK);
@@ -203,6 +200,7 @@ public abstract class AbstractDecimalConverter
      *
      * @return always <i>true</i>
      */
+    @Override
     public boolean isDecimal()
     {
         return true;
@@ -214,6 +212,7 @@ public abstract class AbstractDecimalConverter
      *
      * @return always <i>false</i>
      */
+    @Override
     public boolean usesShortScale()
     {
         return false;

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003 - 2013 The eFaps Team
+ * Copyright 2003 - 2020 The eFaps Team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,9 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * Revision:        $Rev$
- * Last Changed:    $Date$
- * Last Changed By: $Author$
  */
 
 package org.efaps.number2words.converters;
@@ -27,7 +24,6 @@ package org.efaps.number2words.converters;
  * "uno".
  *
  * @author The eFaps Team
- * @version $Id$
  */
 public class Spanish
     extends AbstractDecimalConverter
@@ -158,7 +154,7 @@ public class Spanish
     protected String convertPower(final int _number,
                                   final int _power)
     {
-        return (_number == 1)
+        return _number == 1
                         ? Spanish.SINGLE_POWER_NAMES[_power]
                         : super.convertPower(_number, _power);
     }
@@ -236,7 +232,7 @@ public class Spanish
     {
         final StringBuilder ret = new StringBuilder();
         ret.append(super.convert(_number));
-        if (Long.valueOf(_number).toString().endsWith("1") && _number!=11) {
+        if (Long.valueOf(_number).toString().endsWith("1") && _number!=11 && _number!=-11) {
             ret.append("o");
         }
         return ret.toString();

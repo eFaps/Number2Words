@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
-
 <!--
 
- Copyright 2003 - 2013 The eFaps Team
+ Copyright 2003 - 2020 The eFaps Team
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -16,56 +15,50 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 
- Author:          The eFaps Team
- Revision:        $Rev$
- Last Changed:    $Date$
- Last Changed By: $Author$
-
 -->
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.efaps</groupId>
         <artifactId>efaps-parent</artifactId>
-        <version>3.0.0</version>
+        <version>11.0.0-SNAPSHOT</version>
     </parent>
-    
+
     <packaging>jar</packaging>
     <artifactId>number2words</artifactId>
-    <version>0.6-SNAPSHOT</version>
-    
+    <version>1.0.0-SNAPSHOT</version>
+
     <name>Number2Words</name>
     <description>
         Package that converts numbers to words for different languages.
     </description>
     <url>http://number2words.efaps.org</url>
-   
+
     <inceptionYear>2009</inceptionYear>
-   
+
     <!-- SubVersion Repository -->
     <scm>
-      <connection>scm:svn:http://efaps.googlecode.com/svn/number2words/trunk</connection>
-      <developerConnection>scm:svn:https://efaps.googlecode.com/svn/number2words/trunk</developerConnection>
-      <url>http://code.google.com/p/efaps/source/browse#svn/number2words/tags/number2words-0.5</url>
+        <connection>scm:svn:http://efaps.googlecode.com/svn/number2words/trunk</connection>
+        <developerConnection>scm:svn:https://efaps.googlecode.com/svn/number2words/trunk</developerConnection>
+        <url>http://code.google.com/p/efaps/source/browse#svn/number2words/tags/number2words-0.5</url>
     </scm>
-    
+
     <distributionManagement>
         <site>
             <id>efaps</id>
             <name>eFaps Number2Words Site</name>
-            <url>svn:https://efaps.googlecode.com/svn/site/number2words</url>
+            <url>https://github.com/eFaps/Number2Words.git</url>
         </site>
     </distributionManagement>
-    
     <build>
         <plugins>
-            <!-- define test ng suite XML file -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.13</version>
                 <configuration>
                     <suiteXmlFiles>
                         <suiteXmlFile>${basedir}/src/test/resources/testng.xml</suiteXmlFile>
@@ -74,13 +67,11 @@
             </plugin>
         </plugins>
     </build>
-
     <dependencies>
-        <!-- TestNG for automatic tests -->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>6.8.5</version>
+            <version>7.2.0</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
